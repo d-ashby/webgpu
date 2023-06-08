@@ -32,14 +32,14 @@
       });
 
       const vertices = new Float32Array([
-      //   X,    Y,
-        -0.8, -0.8,
+        //   X,    Y,
+        -0.8, -0.8, // Triangle 1 (Blue)
         0.8, -0.8,
         0.8,  0.8,
 
-        -0.8, -0.8,
+        -0.8, -0.8, // Triangle 2 (Red)
         0.8,  0.8,
-        -0.8, 0.8,
+        -0.8,  0.8,
       ]);
 
       const vertexBuffer = device.createBuffer({
@@ -65,6 +65,11 @@
           // shader code will go here 
         `
       });
+
+      @vertex
+      fn vertexMain() -> @builtin(position) vec4f {
+      return vec4f(0, 0, 0, 1); // (X, Y, Z, W)
+      }
 
       // Clear the canvas with a render pass
       const encoder = device.createCommandEncoder();
